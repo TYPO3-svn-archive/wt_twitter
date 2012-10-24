@@ -81,7 +81,7 @@ class Tx_WtTwitter_Utility_Div {
 		// $url = 'http://twitter.com/statuses/user_timeline/' . $settings['account'] . '.rss'; // old twitter rss feed
 		$url = 'http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=' . $settings['account'];
 		$tmp_array = t3lib_div::xml2tree(t3lib_div::getURL($url)); // change rss to an array tree
-				
+
 		if (!is_array($tmp_array)) { // no array - invalid URL
 			return 'No XML to this URL: ' . htmlspecialchars($url); // no valid url
 		}
@@ -126,10 +126,10 @@ class Tx_WtTwitter_Utility_Div {
 	 */
 	public function getProfileImageUrl($account) {
 		$string = t3lib_div::getURL('http://twitter.com/' . $account);
-		preg_match_all("/\< *[img][^\>]*[src] *= *[\"\']{0,1}([^\"\'\ >]*)/i", $string, $matches);
-		foreach ((array) $matches[0] as $key => $image) {
-			if (stristr($image, '"profile-image"')) {
-				return $matches[1][$key];
+		preg_match_all('/src="([^"]*)"/i', $string, $matches);
+		foreach ((array) $matches[1] as $image) {
+			if (stristr($image, 'normal.png')) {
+				return $image;
 			}
 		}
 	}
