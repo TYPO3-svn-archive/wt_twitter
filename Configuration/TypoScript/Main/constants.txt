@@ -1,0 +1,31 @@
+###
+# This are the default TS-constants for wt_twitter
+##
+
+plugin.wttwitter {
+	
+	# cat=plugin.wt_twitter//0020; type=options[showOwn,showHome,showFriends]; label= Mode: Show only own twitter feeds or show own and from friends or show only from friends
+	main.mode = showOwn
+	
+	# cat=plugin.wt_twitter//0040; type=text; label= Twitter Account: Write your username (e.g. http://twitter.com/USERNAME)
+	main.account = einpraegsam
+	
+	# cat=plugin.wt_twitter//0060; type=text; label= Show feed from hashtag: Type a hashtag
+	main.hashtag = 
+	
+	# cat=plugin.wt_twitter//0070; type=int+; label= Feed limit: Maximum numbers of the last feeds in frontend (e.g. 10)
+	main.limit = 10
+	
+	# cat=plugin.wt_twitter//0080; type=boolean; label= Sort by crdate: DESC or ASC (1 means DESC)
+	main.sortDESC = 1
+	
+	# cat=plugin.wt_twitter//0090; type=boolean; label= Show retweets: Also show own retweets - only if mode is showOwn (e.g. 1)
+	main.showRetweets = 1
+	
+	# cat=plugin.wt_twitter//0800; type=options[,utf8_encode,utf8_decode]; label= Convert Text: Only if you have problems with UTF8 in Frontend (e.g. utf8_decode)
+	main.utf8 = 
+	
+	# cat=plugin.wt_twitter//9999; type=boolean; label= Debug Mode: Enable or disable some debug output
+	debug = 0
+
+}
