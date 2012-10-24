@@ -1,0 +1,106 @@
+# WT_TWITTER PLUGIN #
+includeLibs.user_wttwitter_userfuncs = EXT:wt_twitter/Resources/Private/UserFuncs/user_wttwitter_userfuncs.php
+
+plugin.tx_wttwitter {
+	
+	settings {
+		setup {
+			# Constants
+			mode  = {$plugin.wttwitter.main.mode}
+			account  = {$plugin.wttwitter.main.account}
+			hashtag  = {$plugin.wttwitter.main.hashtag}
+			limit = {$plugin.wttwitter.main.limit}
+			sortDESC = {$plugin.wttwitter.main.sortDESC}
+			showRetweets = {$plugin.wttwitter.main.showRetweets}
+			main.utf8  = {$plugin.wttwitter.main.utf8}
+			debug  = {$plugin.wttwitter.debug}
+			
+			# Tweet Fields (Feed in a loop like text, link, etc..)
+			tweets {
+				
+				# text
+				text = COA
+				text {	
+					# Userfunc to change RT to a retweet image
+					10 = USER
+					10 {
+						userFunc = user_wttwitteruserfuncs->user_wttwitter_retweetIcon
+						userFunc {
+							
+							# Userfunc to change links, hashtags and accounts to its links
+							string = USER
+							string {
+								userFunc = user_wttwitteruserfuncs->user_wttwitter_link
+								userFunc {
+									field = text
+									typolink.extTarget = _blank
+								}
+							}
+							
+							image = IMAGE
+							image {
+								file = EXT:wt_twitter/Resources/Public/Icons/icon_retweet.gif
+								altText = Retweet
+								titleText = Retweet
+								params = class="retweet_icon"
+							}
+							
+						}
+					}
+				}
+				
+				# pubDate
+				created_at = COA
+				created_at {
+					10 = USER
+					10.userFunc = user_wttwitteruserfuncs->user_wttwitter_date
+					10.userFunc {
+						field = created_at
+						strftime = %d.%m.%Y, %H:%M
+					}
+				}
+				
+				# link
+				user_url = TEXT
+				user_url {
+					field = user_url
+					typolink.parameter.field = user_url
+				}
+				
+				# geotag
+				geotag = CASE
+				geotag {
+					if.isTrue.field = geo_type
+					key.field = geo_type
+					
+					Point = IMAGE
+					Point {	
+						file = EXT:wt_twitter/Resources/Public/Icons/icon_geotag.gif
+						imageLinkWrap = 1
+						imageLinkWrap.enable = 1
+						imageLinkWrap.typolink.parameter.cObject = COA
+						imageLinkWrap.typolink.parameter.cObject {
+							10 = TEXT
+							10.value = http://maps.google.com/maps?z=16&q=
+							20 = TEXT
+							20.field = geo_0
+							30 = TEXT
+							30.field = geo_1
+							30.wrap = ,|
+							40 = TEXT
+							40.field = text
+							40.wrap = ("|")
+							40.rawUrlEncode = 1
+							100 = TEXT
+							100.value = _blank
+							100.noTrimWrap = | ||
+						}
+					}
+					
+				}
+			
+			}
+		}
+		
+	}
+}

@@ -1,0 +1,27 @@
+# WT_TWITTER PLUGIN - additional Typoscript for Newsticker #
+
+# Set new path for the templates
+plugin.tx_wttwitter.view.templateRootPath = EXT:wt_twitter/Resources/Private/Templates/TwitterNewsTicker/
+
+# Include Prototype and newsticker JS
+page {
+	includeCSS.file3160 = EXT:wt_twitter/Resources/Public/Media/CSS/wt_twitter_newsticker.css
+	
+	headerData.3160 = COA 
+	headerData.3160 {
+		# add prototype.js
+		10 = TEXT
+		10.wrap = <script src="|" type="text/javascript"></script>
+		10.value = /typo3/contrib/prototype/prototype.js
+		
+		# add effects.js
+		20 = TEXT
+		20.wrap = <script src="|" type="text/javascript"></script>
+		20.value = /typo3/contrib/scriptaculous/effects.js
+		
+		# add own newsticker.js
+		30 = TEXT
+		30.wrap = <script src="|" type="text/javascript"></script>
+		30.value = /typo3conf/ext/wt_twitter/Resources/Public/Media/JS/wt_twitter_newsticker.js
+	}
+}

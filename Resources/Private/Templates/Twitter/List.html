@@ -1,0 +1,23 @@
+<div id="wt_twitter_newsticker">
+	<f:renderFlashMessages class="wt_twitter_errors" style="background-color: #FBB19B; padding: 5px 30px; font-weight: bold; border: 1px solid #DC4C42; margin-bottom: 20px; font-family: arial, verdana; color: #444; font-size: 12px;" />
+    <ul class="wttwitter_feed" style="list-style-type: none;">
+        <f:for each="{tweets}" as="tweet">
+            <li style="padding: 10px; min-height: 40px;">
+            	<f:if condition="{tweet.user_screen_name}">
+                	<f:link.external uri="http://twitter.com/{tweet.user_screen_name}" target="_blank"><img src="{tweet.user_profile_image_url}" alt="{tweet.user_screen_name}" class="wt_twitter_profile_image" style="float: left; margin-right: 10px; border: 0;" /></f:link.external>
+                	<f:link.external uri="http://twitter.com/{tweet.user_screen_name}" target="_blank">{tweet.user_screen_name}</f:link.external>
+                </f:if>
+            	<f:if condition="{tweet.from_user}">
+                	<f:link.external uri="http://twitter.com/{tweet.from_user}" target="_blank"><img src="{tweet.profile_image_url}" alt="{tweet.from_user}" class="wt_twitter_profile_image" style="float: left; margin-right: 10px; border: 0;" /></f:link.external>
+                	<f:link.external uri="http://twitter.com/{tweet.from_user}" target="_blank">{tweet.from_user}</f:link.external>
+                </f:if>
+                
+                {tweet -> f:cObject(typoscriptObjectPath: 'plugin.tx_wttwitter.settings.setup.tweets.created_at', currentValueKey: 'created_at')}<br />
+                
+                {tweet -> f:cObject(typoscriptObjectPath: 'plugin.tx_wttwitter.settings.setup.tweets.text', currentValueKey: 'text')}
+                
+                <div style="clear: both"></div>
+            </li>
+        </f:for>
+    </ul>
+</div>
