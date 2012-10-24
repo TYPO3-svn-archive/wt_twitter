@@ -52,7 +52,7 @@ class Tx_WtTwitter_Controller_TwitterController extends Tx_Extbase_MVC_Controlle
 			$this->flashMessages->add('Please add wt_twitter Static Template in the TYPO3 Backend'); // show missing template error
 		}
 		
-		if (!empty($this->settings['debug'])) {
+		if ($this->settings['debug'] == 1) {
 			t3lib_div::debug($this->settings, 'TypoScript and Flexform settings');
 			t3lib_div::debug($tweets, 'Result Array from Twitter');
 		}
