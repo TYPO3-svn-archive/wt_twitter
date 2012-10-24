@@ -1,0 +1,90 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<main>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:wt_twitter/Resources/Private/Language/locallang_db.xml:pi_flexform.sheet_main</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.flexform.mode>
+						<TCEforms>
+							<label>LLL:EXT:wt_twitter/Resources/Private/Language/locallang_db.xml:pi_flexform.mode</label>
+							<config>
+								<type>select</type>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0">LLL:EXT:wt_twitter/Resources/Private/Language/locallang_db.xml:pi_flexform.mode.0</numIndex>
+										<numIndex index="1">showOwn</numIndex>
+									</numIndex>
+									<!--
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:wt_twitter/Resources/Private/Language/locallang_db.xml:pi_flexform.mode.1</numIndex>
+										<numIndex index="1">showHome</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:wt_twitter/Resources/Private/Language/locallang_db.xml:pi_flexform.mode.2</numIndex>
+										<numIndex index="1">showFriends</numIndex>
+									</numIndex>
+									-->
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:wt_twitter/Resources/Private/Language/locallang_db.xml:pi_flexform.mode.3</numIndex>
+										<numIndex index="1">showFromSearch</numIndex>
+									</numIndex>
+								</items>
+								<maxitems>1</maxitems>
+								<size>1</size>
+							</config>
+						</TCEforms>
+					</settings.flexform.mode>
+					<settings.flexform.account>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:wt_twitter/Resources/Private/Language/locallang_db.xml:pi_flexform.account</label>
+							<config>
+								<type>input</type>
+								<size>20</size>
+							</config>
+						</TCEforms>
+					</settings.flexform.account>
+					<!--
+					<settings.flexform.password>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:wt_twitter/Resources/Private/Language/locallang_db.xml:pi_flexform.password</label>
+							<config>
+								<type>input</type>
+								<size>20</size>
+								<eval>password</eval>
+							</config>
+						</TCEforms>
+					</settings.flexform.password>
+					-->
+					<settings.flexform.hashtag>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:wt_twitter/Resources/Private/Language/locallang_db.xml:pi_flexform.hashtag</label>
+							<config>
+								<type>input</type>
+								<size>20</size>
+							</config>
+						</TCEforms>
+					</settings.flexform.hashtag>
+					<settings.flexform.limit>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:wt_twitter/Resources/Private/Language/locallang_db.xml:pi_flexform.limit</label>
+							<config>
+								<type>input</type>
+								<size>4</size>
+							</config>
+						</TCEforms>
+					</settings.flexform.limit>
+				</el>
+			</ROOT>
+		</main>
+	</sheets>
+</T3DataStructure>

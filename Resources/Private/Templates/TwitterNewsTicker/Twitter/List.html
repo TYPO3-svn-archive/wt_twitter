@@ -1,0 +1,7 @@
+<div id="wt_twitter_newsticker">
+    <ul class="wttwitter_feed">
+        <f:for each="{tweets}" as="tweet">
+            <li>{tweet -> f:cObject(typoscriptObjectPath: 'plugin.tx_wttwitter.settings.setup.tweets.text', currentValueKey: 'text')}</li>
+        </f:for>
+    </ul>
+</div>

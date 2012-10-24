@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'wt_twitter'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.list_type_pi1">Show Twitter Feeds</label>
+			<label index="pi_flexform.sheet_main">Main Settings</label>
+			<label index="pi_flexform.account">Twitter Account</label>
+			<label index="pi_flexform.password">Twitter Password</label>
+			<label index="pi_flexform.mode">Mode</label>
+			<label index="pi_flexform.mode.0">Show Own Tweets</label>
+			<label index="pi_flexform.mode.1">Show Own and Friend Tweets</label>
+			<label index="pi_flexform.mode.2">Show Friends Tweets</label>
+			<label index="pi_flexform.mode.3">Show Tweets from Searchterm</label>
+			<label index="pi_flexform.template">Path to HTML template (optional)</label>
+			<label index="pi_flexform.limit">Limit (optional)</label>
+			<label index="pi_flexform.hashtag">Enter a hashtag (only if mode is "Show Feed from Searchterm")</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tt_content.list_type_pi1">Zeige Twitter Einträge</label>
+			<label index="pi_flexform.sheet_main">Einstellungen</label>
+			<label index="pi_flexform.account">Twitter Account</label>
+			<label index="pi_flexform.password">Twitter Passwort</label>
+			<label index="pi_flexform.mode">Modus</label>
+			<label index="pi_flexform.mode.0">Zeige eigene Tweets</label>
+			<label index="pi_flexform.mode.1">Zeige eigene und befreundete Tweets</label>
+			<label index="pi_flexform.mode.2">Zeige befreundete Tweets</label>
+			<label index="pi_flexform.mode.3">Zeige Tweets anhand von Suchbegriff</label>
+			<label index="pi_flexform.template">HTML Template Pfad (optional)</label>
+			<label index="pi_flexform.limit">Limit (optional)</label>
+			<label index="pi_flexform.hashtag">Suche nach Hashtag (nur bei Modus "Zeige Feed anhand von Suchbegriff")</label>
+		</languageKey>
+	</data>
+</T3locallang>
