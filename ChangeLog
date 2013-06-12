@@ -2,6 +2,7 @@
 
 	* Fixed rss feed url due to twitter api changes
 	* Fixed Bug #42682: Still "missing image" (Thanks to Kurt Kunig)
+	* Manual update
 
 2012-10-24  Alex Kellner <alexander.kellner@in2code.de>
 
