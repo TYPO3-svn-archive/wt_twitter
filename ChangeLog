@@ -1,6 +1,7 @@
 2013-06-12  Nicole Cordes <cordes@cps-it.de>
 
 	* Fixed rss feed url due to twitter api changes
+	* Fixed Bug #42682: Still "missing image" (Thanks to Kurt Kunig)
 
 2012-10-24  Alex Kellner <alexander.kellner@in2code.de>
 

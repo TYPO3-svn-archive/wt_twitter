@@ -125,10 +125,17 @@ class Tx_WtTwitter_Utility_Div {
 	 * @return	string		Picture Source
 	 */
 	public function getProfileImageUrl($account) {
-		$string = t3lib_div::getURL('http://twitter.com/' . $account);
+		// Switch curl use off as there are problems with twitter ssl certificate
+		$curlUse = $GLOBALS['TYPO3_CONF_VARS']['SYS']['curlUse'];
+		$GLOBALS['TYPO3_CONF_VARS']['SYS']['curlUse'] = 0;
+		$string = t3lib_div::getURL('https://twitter.com/' . $account, 0, FALSE, $report);
+		// Reset curl use
+		$GLOBALS['TYPO3_CONF_VARS']['SYS']['curlUse'] = $curlUse;
+
+		// Parse result for any images
 		preg_match_all('/src="([^"]*)"/i', $string, $matches);
 		foreach ((array) $matches[1] as $image) {
-			if (stristr($image, 'normal.png')) {
+			if (stristr($image, '_normal.')) {
 				return $image;
 			}
 		}
