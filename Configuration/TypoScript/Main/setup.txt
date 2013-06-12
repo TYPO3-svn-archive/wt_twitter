@@ -12,9 +12,9 @@ plugin.tx_wttwitter {
 			limit = {$plugin.wttwitter.main.limit}
 			sortDESC = {$plugin.wttwitter.main.sortDESC}
 			showRetweets = {$plugin.wttwitter.main.showRetweets}
+			rssFeed = {$plugin.wttwitter.main.rssFeed}
 			main.utf8  = {$plugin.wttwitter.main.utf8}
 			debug = {$plugin.wttwitter.debug}
-			rssFeed = http://www.twitter-rss.com/user_timeline.php?screen_name=%q
 
 			# Tweet Fields (Feed in a loop like text, link, etc..)
 			tweets {
