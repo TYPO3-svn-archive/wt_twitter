@@ -2,7 +2,7 @@
 includeLibs.user_wttwitter_userfuncs = EXT:wt_twitter/Resources/Private/UserFuncs/user_wttwitter_userfuncs.php
 
 plugin.tx_wttwitter {
-	
+
 	settings {
 		setup {
 			# Constants
@@ -13,20 +13,21 @@ plugin.tx_wttwitter {
 			sortDESC = {$plugin.wttwitter.main.sortDESC}
 			showRetweets = {$plugin.wttwitter.main.showRetweets}
 			main.utf8  = {$plugin.wttwitter.main.utf8}
-			debug  = {$plugin.wttwitter.debug}
-			
+			debug = {$plugin.wttwitter.debug}
+			rssFeed = http://www.twitter-rss.com/user_timeline.php?screen_name=%q
+
 			# Tweet Fields (Feed in a loop like text, link, etc..)
 			tweets {
-				
+
 				# text
 				text = COA
-				text {	
+				text {
 					# Userfunc to change RT to a retweet image
 					10 = USER
 					10 {
 						userFunc = user_wttwitteruserfuncs->user_wttwitter_retweetIcon
 						userFunc {
-							
+
 							# Userfunc to change links, hashtags and accounts to its links
 							string = USER
 							string {
@@ -36,7 +37,7 @@ plugin.tx_wttwitter {
 									typolink.extTarget = _blank
 								}
 							}
-							
+
 							image = IMAGE
 							image {
 								file = EXT:wt_twitter/Resources/Public/Icons/icon_retweet.gif
@@ -44,11 +45,11 @@ plugin.tx_wttwitter {
 								titleText = Retweet
 								params = class="retweet_icon"
 							}
-							
+
 						}
 					}
 				}
-				
+
 				# pubDate
 				created_at = COA
 				created_at {
@@ -59,22 +60,22 @@ plugin.tx_wttwitter {
 						strftime = %d.%m.%Y, %H:%M
 					}
 				}
-				
+
 				# link
 				user_url = TEXT
 				user_url {
 					field = user_url
 					typolink.parameter.field = user_url
 				}
-				
+
 				# geotag
 				geotag = CASE
 				geotag {
 					if.isTrue.field = geo_type
 					key.field = geo_type
-					
+
 					Point = IMAGE
-					Point {	
+					Point {
 						file = EXT:wt_twitter/Resources/Public/Icons/icon_geotag.gif
 						imageLinkWrap = 1
 						imageLinkWrap.enable = 1
@@ -96,11 +97,11 @@ plugin.tx_wttwitter {
 							100.noTrimWrap = | ||
 						}
 					}
-					
+
 				}
-			
+
 			}
 		}
-		
+
 	}
 }

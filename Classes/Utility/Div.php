@@ -26,7 +26,7 @@
  * Div methods for the wt_twitter package
  */
 class Tx_WtTwitter_Utility_Div {
-	
+
 	/**
 	 * Get twitter array
 	 *
@@ -36,16 +36,16 @@ class Tx_WtTwitter_Utility_Div {
 	public static function getArray($settings) {
 		// config
 		$arr = array();
-		
+
 		// which file should be connected
 		switch ($settings['mode']) {
 			default:
 			case 'showOwn': // show own feeds
 				$arr = Tx_WtTwitter_Utility_Div::getArrayFromXML($settings);
-				
+
 				return $arr;
 				break;
-			
+
 			case 'showFromSearch': // show feeds with searchterm
 				if (!function_exists('curl_init')) { // if CURL is installed
 					return 'Please enable CURL on your server'; // show error
@@ -63,12 +63,12 @@ class Tx_WtTwitter_Utility_Div {
 				}
 				$arr = Tx_WtTwitter_Utility_Div::arrayThree2ArrayTwo($arr); // max 2 levels
 				$arr = array_chunk($arr, $settings['limit']); // split on limit
-				
+
 				return $arr[0];
 				break;
 		}
 	}
-	
+
 	/**
 	 * Get Array from XML
 	 *
@@ -79,7 +79,7 @@ class Tx_WtTwitter_Utility_Div {
 		$i = 0;
 		$profile_image_url = Tx_WtTwitter_Utility_Div::getProfileImageUrl($settings['account']); // get image src
 		// $url = 'http://twitter.com/statuses/user_timeline/' . $settings['account'] . '.rss'; // old twitter rss feed
-		$url = 'http://api.twitter.com/1/statuses/user_timeline.rss?screen_name=' . $settings['account'];
+		$url = str_replace('%q', $settings['account'], $settings['rssFeed']);
 		$tmp_array = t3lib_div::xml2tree(t3lib_div::getURL($url)); // change rss to an array tree
 
 		if (!is_array($tmp_array)) { // no array - invalid URL
@@ -94,7 +94,7 @@ class Tx_WtTwitter_Utility_Div {
 				}
 			}
 		}
-		
+
 		// item
 		$tmp_array3['item'] = $tmp_array['rss']['0']['ch']['channel']['0']['ch']['item']; // get whole item array
 		foreach ((array) $tmp_array3['item'] as $key => $value) { // one loop for every item
@@ -103,7 +103,7 @@ class Tx_WtTwitter_Utility_Div {
 				$array['item'][$i]['source'] = $tmp_array3['item'][$key]['ch']['twitter:source'][0]['values'][0];
 				$array['item'][$i]['from_user'] = htmlspecialchars($settings['account']);
 				$array['item'][$i]['profile_image_url'] = $profile_image_url;
-				
+
 				// text
 				$array['item'][$i]['text'] = $tmp_array3['item'][$key]['ch']['description'][0]['values'][0];
 				$array['item'][$i]['text'] = substr($array['item'][$i]['text'], strlen($settings['account'])+2); // without account name in front of tweet
@@ -114,10 +114,10 @@ class Tx_WtTwitter_Utility_Div {
 				break; // stop loop if limit reached
 			}
 		}
-		
+
 		return $array['item'];
 	}
-	
+
 	/**
 	 * Prefunction for arraytwo2arrayone
 	 *
@@ -133,7 +133,7 @@ class Tx_WtTwitter_Utility_Div {
 			}
 		}
 	}
-	
+
 	/**
 	 * Prefunction for arraytwo2arrayone
 	 *
@@ -146,7 +146,7 @@ class Tx_WtTwitter_Utility_Div {
 		}
 		return $array;
 	}
-	
+
 	/**
 	 * Function arraytwo2arrayone() changes array with two levels to an array with one level
 	 * array('v1', array('v2')) => array('v1', 'v1_v2)
@@ -156,28 +156,28 @@ class Tx_WtTwitter_Utility_Div {
 	 */
 	public function arrayTwo2ArrayOne($array) {
 		$newarray = array();
-		
+
 		if (count($array) > 0 && is_array($array)) {
 			foreach ($array as $k => $v) {
 				if (!is_array($v)) { // first level
-					
+
 					$newarray[$k] = $v; // no change
-				
+
 				} else { // second level
 					if (count($v) > 0) {
-						
+
 						foreach ($v as $k2 => $v2) {
 							if (!is_array($v2)) $newarray[$k . '_' . $k2] = $v2; // change to first level
 						}
-					
+
 					}
 				}
 			}
 		}
-		
+
 		return $newarray;
 	}
-	
+
 	/**
 	 * change charset of string values
 	 *
@@ -196,7 +196,7 @@ class Tx_WtTwitter_Utility_Div {
 		}
 		return $str;
 	}
-	
+
 	/**
 	 * Merge TypoScript and Flexform values (Flexform has the priority)
 	 *
@@ -205,11 +205,11 @@ class Tx_WtTwitter_Utility_Div {
 	 */
 	public static function mergeTypoScript2FlexForm(&$settings) {
 		$tmp_settings = array();
-		
+
 		if (isset($settings['setup']) && is_array($settings['setup'])) {
 			$tmp_settings = $settings['setup']; // copy typoscript part to tmp
 		}
-		
+
 		if (isset($settings['flexform']) && is_array($settings['flexform'])) {
 			foreach ((array) $settings['flexform'] as $key => $value) {
 				if (!empty($value)) {
@@ -217,10 +217,10 @@ class Tx_WtTwitter_Utility_Div {
 				}
 			}
 		}
-		
+
 		$settings = $tmp_settings;
 	}
-	
+
 }
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/wt_twitter/Classes/Utility/Div.php'])	{

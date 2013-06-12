@@ -1,3 +1,7 @@
+2013-06-12  Nicole Cordes <cordes@cps-it.de>
+
+	* Fixed rss feed url due to twitter api changes
+
 2012-10-24  Alex Kellner <alexander.kellner@in2code.de>
 
 	* Release of wt_twitter 0.5.5
