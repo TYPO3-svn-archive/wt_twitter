@@ -1,5 +1,6 @@
 2013-06-12  Nicole Cordes <cordes@cps-it.de>
 
+	* Release of wt_twitter 0.5.6
 	* Fixed rss feed url due to twitter api changes
 	* Fixed Bug #42682: Still "missing image" (Thanks to Kurt Kunig)
 	* Manual update
